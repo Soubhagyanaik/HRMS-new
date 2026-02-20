@@ -26,6 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-gls^*l_*fgnj*2-ey87y!ikb2xx43rxs=+%2o2z-u(93w7#m0i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# hrms_backend/settings.py
+
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -33,6 +35,8 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+DEBUG = True
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,10 +45,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'rest_framework',  # DRF
-    'employees',       # aapka app
+    'rest_framework',
+    'employees',
+    'attendance',
 ]
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -86,8 +99,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Password validation
